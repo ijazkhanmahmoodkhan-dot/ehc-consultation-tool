@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Woodroyd Pharmacy Full EHC Consultation Website</title>
+<style>
+:root{
+  --bg:#f3f7fc; --card:#ffffff; --ink:#142033; --muted:#5d6b82;
+  --blue:#075fc7; --darkblue:#092e63; --green:#12805c; --amber:#b45f00; --red:#b42318; --purple:#6741a9;
+  --line:#d9e2ef; --soft:#f7faff;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(135deg,#e8f1ff,#fbfdff);color:var(--ink)}
+header{background:linear-gradient(135deg,#082957,#0b63ce);color:#fff;padding:24px 18px}
+header h1{margin:0;font-size:27px}
+header p{margin:8px 0 0;max-width:1120px;line-height:1.45}
+main{max-width:1240px;margin:20px auto;padding:0 14px}
+.notice{background:#fff8e6;border:1px solid #f5d68a;border-left:8px solid #d98b00;padding:14px;border-radius:12px;margin-bottom:16px;line-height:1.45}
+.grid{display:grid;grid-template-columns:1fr;gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:15px;box-shadow:0 5px 18px rgba(20,32,51,.08);padding:18px}
+.card h2{margin:0 0 10px;font-size:20px;color:var(--darkblue)}
+.card h3{color:var(--darkblue);margin:16px 0 8px}
+.section-title{display:flex;align-items:center;gap:10px}
+.badge{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:4px 10px;font-weight:bold;font-size:12px;color:#fff;background:var(--blue)}
+label{display:block;margin:12px 0 6px;font-weight:bold}
+.small{color:var(--muted);font-size:13px;line-height:1.35}
+input,select,textarea{width:100%;padding:10px;border:1px solid #b7c4d8;border-radius:9px;font-size:15px;background:#fff}
+textarea{min-height:76px}
+.row{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.row3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.row4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.checks{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:8px}
+.checks3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
+.check{border:1px solid #d7dfed;border-radius:9px;padding:9px;background:#fbfdff;font-weight:normal}
+.check input{width:auto;margin-right:7px}
+.group{border:1px solid #d7dfed;border-radius:12px;padding:12px;background:#fbfdff;margin-top:10px}
+.group h3{margin-top:0}
+button{border:0;border-radius:10px;padding:12px 16px;font-weight:bold;cursor:pointer;font-size:15px}
+.primary{background:var(--blue);color:white}
+.secondary{background:#edf3fb;color:#0b2f64;border:1px solid #cbd9ef}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.result{padding:16px;border-radius:14px;border:1px solid #d7dfed;margin-top:14px}
+.result h3{margin:0 0 8px;font-size:22px}
+.red{background:#fff1f0;border-left:8px solid var(--red)}
+.green{background:#ecfdf3;border-left:8px solid var(--green)}
+.amber{background:#fff8e6;border-left:8px solid var(--amber)}
+.blue{background:#eef6ff;border-left:8px solid var(--blue)}
+.purple{background:#f4efff;border-left:8px solid var(--purple)}
+ul{margin-top:8px}
+li{margin:6px 0;line-height:1.35}
+table{width:100%;border-collapse:collapse;margin-top:10px;font-size:14px}
+th,td{border:1px solid #d8e1ee;padding:9px;text-align:left;vertical-align:top}
+th{background:#eef4fc}
+.pill{display:inline-block;border-radius:999px;padding:3px 9px;margin:2px;font-size:12px;font-weight:bold}
+.pill-red{background:#ffe2df;color:#8a1f17}
+.pill-green{background:#dcfce7;color:#166534}
+.pill-amber{background:#fff0c2;color:#8a4b00}
+.pill-blue{background:#dbeafe;color:#1e3a8a}
+.footer{font-size:12px;color:#5f6f89;margin:16px 0 30px}
+details{border:1px solid #d7dfed;border-radius:10px;padding:10px;background:#fbfdff;margin-top:10px}
+summary{font-weight:bold;cursor:pointer;color:#0b2f64}
+.hidden{display:none}
+#bmiResult{font-weight:bold;color:#0b2f64}
+@media(max-width:920px){.row,.row3,.row4,.checks,.checks3{grid-template-columns:1fr} header h1{font-size:22px}}
+@media print{
+  body{background:#fff}
+  button,.actions{display:none}
+  .card{break-inside:avoid;box-shadow:none}
+  header{background:#fff;color:#000;border-bottom:2px solid #000}
+}
+</style>
+</head>
+<body>
+<header>
+<h1>Full Emergency Hormonal Contraception Consultation Website</h1>
+<p>Detailed pharmacy consultation aid with patient-friendly medicine lists, BMI calculator, safeguarding, Fraser assessment, missed contraception prompts, oral EC recommendation, copper IUD referral prompts, counselling and printable audit record.</p>
+</header>
+
+<main>
+<div class="notice">
+<strong>Important:</strong> This tool supports trained pharmacy professionals only. It must be checked against the current signed NHS/local PGD, FSRH guidance, product SmPCs, safeguarding policy and local referral pathways before live clinical use. The final clinical decision remains with the pharmacist/authorised clinician.
+</div>
+
+<div class="grid">
+
+<section class="card">
+<div class="section-title"><span class="badge">1</span><h2>Consultation Details</h2></div>
+<div class="row4">
+<div><label>Consultation date</label><input id="consultDate" type="date"></div>
+<div><label>Consultation time</label><input id="consultTime" type="time"></div>
+<div><label>Consulting pharmacist / clinician</label><input id="pharmacist" placeholder="e.g. Ijaz Khan"></div>
+<div><label>Location</label><input id="location" value="Woodroyd Pharmacy"></div>
+</div>
+<div class="row3">
+<div><label>Patient initials / reference</label><input id="patientRef" placeholder="Avoid full name on printed audit copy"></div>
+<div><label>Age</label><input id="age" type="number" min="0" max="60" placeholder="e.g. 18"></div>
+<div><label>GP / local area</label><input id="gp" placeholder="Optional"></div>
+</div>
+</section>
+
+<section class="card">
+<div class="section-title"><span class="badge">2</span><h2>Initial Suitability, Consent & Confidentiality</h2></div>
+<div class="row3">
+<div><label>Patient present in person?</label><select id="present"><option value="">Select</option><option>Yes</option><option>No</option></select></div>
+<div><label>Private consultation possible?</label><select id="private"><option value="">Select</option><option>Yes</option><option>No</option></select></div>
+<div><label>Patient can consent and understand advice?</label><select id="consent"><option value="">Select</option><option>Yes</option><option>No</option><option>Unsure</option></select></div>
+</div>
+<div class="checks">
+<label class="check"><input type="checkbox" id="language"> Language/communication barrier not adequately resolved</label>
+<label class="check"><input type="checkbox" id="thirdParty"> Third party appears to be answering or patient cannot speak freely</label>
+<label class="check"><input type="checkbox" id="capacity"> Capacity, intoxication, distress, confusion or learning difficulty concern</label>
+<label class="check"><input type="checkbox" id="confidentialityExplained"> Confidentiality and limits explained</label>
+</div>
+</section>
+
+<section class="card">
+<div class="section-title"><span class="badge">3</span><h2>Safeguarding, Fraser Competence & Vulnerability</h2></div>
+<div class="row3">
+<div><label>Under 16?</label><select id="under16sel"><option value="">Select</option><option>No</option><option>Yes</option></select></div>
+<div><label>Under 13?</label><select id="under13sel"><option value="">Select</option><option>No</option><option>Yes</option></select></div>
+<div><label>Partner age / concern?</label><select id="partnerConcern"><option value="">Select</option><option>No concern disclosed</option><option>Large age gap / unknown partner / concern</option><option>Patient will not disclose</option></select></div>
+</div>
+<div class="checks">
+<label class="check"><input type="checkbox" id="coercion"> Coercion, grooming, exploitation, trafficking or domestic abuse concern</label>
+<label class="check"><input type="checkbox" id="assault"> Sexual assault or non-consensual sex disclosed/suspected</label>
+<label class="check"><input type="checkbox" id="safeguard"> Any safeguarding concern requiring escalation</label>
+<label class="check"><input type="checkbox" id="selfHarm"> Immediate risk of harm to self or others</label>
+<label class="check"><input type="checkbox" id="fraser1"> Under 16: understands advice and treatment</label>
+<label class="check"><input type="checkbox" id="fraser2"> Under 16: cannot be persuaded to involve parent/carer</label>
+<label class="check"><input type="checkbox" id="fraser3"> Under 16: likely to continue sexual activity</label>
+<label class="check"><input type="checkbox" id="fraser4"> Under 16: physical/mental health may suffer without treatment</label>
+<label class="check"><input type="checkbox" id="fraser5"> Under 16: treatment is in young person’s best interests</label>
+</div>
+<textarea id="safeguardingNotes" placeholder="Safeguarding / Fraser notes, actions, referral names, advice given"></textarea>
+</section>
+
+<section class="card">
+<div class="section-title"><span class="badge">4</span><h2>Pregnancy Risk, UPSI Timing & Menstrual History</h2></div>
+<div class="row4">
+<div><label>Hours since most recent UPSI / failure</label><input id="hours" type="number" min="0" placeholder="e.g. 24"></div>
+<div><label>Date/time of UPSI if known</label><input id="upsiDate" placeholder="e.g. 08/06/2026 22:00"></div>
+<div><label>Cycle day today</label><input id="cycleDay" type="number" min="1" max="80" placeholder="e.g. 14"></div>
+<div><label>Usual cycle length</label><input id="cycleLength" type="number" min="20" max="60" placeholder="e.g. 28"></div>
+</div>
+<div class="row3">
+<div><label>Multiple UPSI this cycle?</label><select id="multiple"><option value="">Select</option><option>No</option><option>Yes - all within 120h</option><option>Yes - earliest over 120h</option></select></div>
+<div><label>Last menstrual period normal?</label><select id="lmpNormal"><option value="">Select</option><option>Yes</option><option>No / late / unusual</option><option>Unsure</option></select></div>
+<div><label>Pregnancy possibility before this UPSI?</label><select id="pregnant"><option value="">Select</option><option>No obvious reason</option><option>Period late/abnormal bleeding/pregnancy symptoms</option><option>Positive pregnancy test/known pregnancy</option><option>Recent pregnancy/abortion/miscarriage/birth</option></select></div>
+</div>
+<div class="row3">
+<div><label>Likely ovulation / high fertile risk?</label><select id="ovulation"><option value="">Select</option><option>Unknown</option><option>No</option><option>Yes / mid-cycle / LH surge</option><option>Likely after ovulation</option></select></div>
+<div><label>Breastfeeding?</label><select id="breastfeeding"><option value="">Select</option><option>No</option><option>Yes</option></select></div>
+<div><label>Recent EC this cycle?</label><select id="recentEC"><option value="">Select</option><option>No</option><option>Levonorgestrel already used</option><option>Ulipristal already used</option><option>Unknown</option></select></div>
+</div>
+<textarea id="pregNotes" placeholder="Pregnancy risk notes, LMP, cycle, previous UPSI, reason for EC"></textarea>
+</section>
+
+<section class="card">
+<div class="section-title"><span class="badge">5</span><h2>Contraception Failure / Missed Method Details</h2></div>
+<div class="row3">
+<div><label>Current contraception method</label><select id="method" onchange="showMethodFollowup()">
+<option value="">Select</option>
+<option>None</option><option>Condom failure/slippage</option><option>Combined pill missed/late</option>
+<option>Progestogen-only pill missed/late</option><option>Implant issue/removal/expired</option>
+<option>Injection late</option><option>Patch/ring issue</option><option>IUS/IUD expelled/removed/expired</option>
+<option>Recent abortion/miscarriage/birth</option><option>Other/unclear</option>
+</select></div>
+<div><label>Wants to start/restart hormonal contraception now?</label><select id="startHormonal"><option value="">Select</option><option>No</option><option>Yes</option><option>Already using</option></select></div>
+<div><label>Needs bridging contraception discussion?</label><select id="bridging"><option value="">Select</option><option>No</option><option>Yes</option><option>Already arranged</option></select></div>
+</div>
+<div id="methodFollowup" class="group hidden"></div>
+<textarea id="methodNotes" placeholder="Missed pill details, number missed, where in packet, condom failure, injection date, implant/IUD dates, etc."></textarea>
+</section>
+
+<section class="card">
+<div class="section-title"><span class="badge">6</span><h2>Weight, Height & BMI Calculator</h2></div>
+<div class="row4">
+<div><label>Weight in kg</label><input id="weightKg" type="number" step="0.1" placeholder="e.g. 72" oninput="calcBMI()"></div>
+<div><label>Height in cm</label><input id="heightCm" type="number" step="0.1" placeholder="e.g. 165" oninput="calcBMI()"></div>
+<div><label>Calculated BMI</label><input id="bmiValue" readonly placeholder="Auto-calculated"></div>
+<div><label>BMI/weight risk</label><div id="bmiResult" style="padding:10px;background:#eef6ff;border-radius:9px;border:1px solid #cbd9ef">Enter weight and height</div></div>
+</div>
+<div class="checks">
+<label class="check"><input type="checkbox" id="weightUnknown"> Weight/height declined or unknown</label>
+<label class="check"><input type="checkbox" id="weightSensitive"> Weight discussion handled sensitively / patient counselled</label>
+</div>
+</section>
+
+<section class="card">
+<div class="section-title"><span class="badge">7</span><h2>Medicines Currently Taken — Tick All That Apply</h2></div>
+<p class="small">This replaces asking the patient “are you taking enzyme-inducing drugs?” Use brand/generic names where possible and check the PMR/SCR/NHS App/patient’s medication list if available.</p>
+
+<div class="group">
+<h3>Epilepsy / Seizure Medicines</h3>
+<div class="checks3">
+<label class="check"><input class="enzymeMed" type="checkbox" id="medCarbamazepine"> Carbamazepine / Tegretol</label>
+<label class="check"><input class="enzymeMed" type="checkbox" id="medOxcarbazepine"> Oxcarbazepine / Trileptal</label>
+<label class="check"><input class="enzymeMed" type="checkbox" id="medPhenytoin"> Phenytoin / Epanutin</label>
+<label class="check"><input class="enzymeMed" type="checkbox" id="medPhenobarbital"> Phenobarbital / phenobarbitone</label>
+<label class="check"><input class="enzymeMed" type="checkbox" id="medPrimidone"> Primidone</label>
+<label class="check"><input class="enzymeMed" type="checkbox" id="medTopiramate"> Topiramate / Topamax</label>
+<label class="check"><input class="enzymeMed" type="checkbox" id="medEslicarbazepine"> Eslicarbazepine / Zebinix</label>
+<label class="check"><input class="enzymeMed" type="checkbox" id="medRufinamide"> Rufinamide / Inovelon</label>
+</div>
+</div>
+
+<div class="group">
+<h3>Tuberculosis / Antibiotic / Antifungal Medicines</h3>
+<div class="checks3">
+<label class="check"><input class="enzymeMed" type="checkbox" id="medRifampicin"> Rifampicin</label>
+<label class="check"><input class="enzymeMed" type="checkbox" id="medRifabutin"> Rifabutin</label>
+<label class="check"><input class="enzymeMed" type="checkbox" id="medGriseofulvin"> Griseofulvin</label>
+</div>
+</div>
+
+<div class="group">
+<h3>HIV / Antiviral Medicines</h3>
+<div class="checks3">
+<label class="check"><input class="enzymeMed" type="checkbox" id="medEfavirenz"> Efavirenz</label>
+<label class="check"><input class="enzymeMed" type="checkbox" id="medNevirapine"> Nevirapine</label>
+<label class="check"><input class="enzymeMed" type="checkbox" id="medRitonavir"> Ritonavir or ritonavir-boosted regimen</label>
+<label class="check"><input class="enzymeMed" type="checkbox" id="medOtherHIV"> Other HIV treatment — check interaction</label>
+</div>
+</div>
+
+<div class="group">
+<h3>Herbal / Other Important Medicines</h3>
+<div class="checks3">
+<label class="check"><input class="enzymeMed" type="checkbox" id="medStJohns"> St John’s Wort / Hypericum</label>
+<label class="check"><input class="enzymeMed" type="checkbox" id="medBosentan"> Bosentan</label>
+<label class="check"><input class="enzymeMed" type="checkbox" id="medModafinil"> Modafinil</label>
+<label class="check"><input class="cautionMed" type="checkbox" id="medAprepitant"> Aprepitant / fosaprepitant</label>
+<label class="check"><input class="cautionMed" type="checkbox" id="medSteroids"> Oral prednisolone/dexamethasone for severe asthma</label>
+<label class="check"><input class="cautionMed" type="checkbox" id="medPPI"> Omeprazole/lansoprazole or other acid-reducing medicine</label>
+</div>
+</div>
+
+<div class="group">
+<h3>Blood Thinners / Anticoagulants</h3>
+<div class="checks3">
+<label class="check"><input class="cautionMed" type="checkbox" id="medWarfarin"> Warfarin</label>
+<label class="check"><input class="cautionMed" type="checkbox" id="medApixaban"> Apixaban</label>
+<label class="check"><input class="cautionMed" type="checkbox" id="medRivaroxaban"> Rivaroxaban</label>
+<label class="check"><input class="cautionMed" type="checkbox" id="medDabigatran"> Dabigatran</label>
+<label class="check"><input class="cautionMed" type="checkbox" id="medEdoxaban"> Edoxaban</label>
+</div>
+</div>
+
+<div class="group">
+<h3>Emergency Contraception / Hormonal Medicines</h3>
+<div class="checks3">
+<label class="check"><input type="checkbox" id="medEllaRecent"> EllaOne / ulipristal taken in last 5 days</label>
+<label class="check"><input type="checkbox" id="medLevonelleRecent"> Levonelle / levonorgestrel already taken this cycle</label>
+<label class="check"><input type="checkbox" id="medHormonalCurrent"> Current hormonal contraception or wants to restart today</label>
+</div>
+</div>
+
+<div class="group">
+<h3>Unlisted / Uncertain Medicines</h3>
+<div class="checks">
+<label class="check"><input type="checkbox" id="medNone"> Patient reports no regular medicines</label>
+<label class="check"><input type="checkbox" id="medUnsure"> Patient unsure / medicine list unavailable</label>
+<label class="check"><input type="checkbox" id="medOther"> Other medicine not listed — check interaction before supply</label>
+<label class="check"><input type="checkbox" id="medLast4Weeks"> Relevant medicine used within the last 4 weeks</label>
+</div>
+<textarea id="medNotes" placeholder="Record all medicines, brands, dose, when last taken, PMR/SCR checked, interaction source checked"></textarea>
+</div>
+</section>
+
+<section class="card">
+<div class="section-title"><span class="badge">8</span><h2>Medical Conditions & Product Exclusions</h2></div>
+<div class="checks">
+<label class="check"><input type="checkbox" id="severeAsthma"> Severe asthma treated with oral glucocorticoids</label>
+<label class="check"><input type="checkbox" id="liver"> Severe hepatic impairment</label>
+<label class="check"><input type="checkbox" id="porphyria"> Acute porphyria concern</label>
+<label class="check"><input type="checkbox" id="malabsorption"> Severe vomiting/diarrhoea/malabsorption concern</label>
+<label class="check"><input type="checkbox" id="allergyUPA"> Allergy/contraindication to ulipristal acetate</label>
+<label class="check"><input type="checkbox" id="allergyLNG"> Allergy/contraindication to levonorgestrel</label>
+<label class="check"><input type="checkbox" id="vomit"> Vomited after previous EC dose in this episode</label>
+<label class="check"><input type="checkbox" id="conditionUnclear"> Medical history unclear / needs pharmacist judgement</label>
+</div>
+<textarea id="conditionNotes" placeholder="Medical history, allergies, vomiting/diarrhoea, liver disease, asthma steroid use, breastfeeding details"></textarea>
+</section>
+
+<section class="card">
+<div class="section-title"><span class="badge">9</span><h2>Generate Recommendation</h2></div>
+<p class="small">Output includes red flags, supply recommendation, copper IUD advice, oral EC choice, dose considerations, counselling, and audit record.</p>
+<div class="actions">
+<button class="primary" onclick="assess()">Generate Full EHC Recommendation</button>
+<button class="secondary" onclick="window.print()">Print / Save as PDF</button>
+<button class="secondary" onclick="resetForm()">Reset</button>
+</div>
+<div id="output"></div>
+</section>
+
+<section class="card">
+<h2>Built-in Counselling & Governance Reference</h2>
+<table>
+<tr><th>Topic</th><th>Information to cover</th></tr>
+<tr><td>Copper IUD</td><td>Most effective EC. Can be fitted up to 5 days after UPSI, or later depending on earliest likely ovulation. Provides ongoing contraception. Not affected by weight/BMI or enzyme-inducing medicines. Refer urgently if accepted, oral EC outside window, enzyme-inducer use, weight/BMI concern, multiple UPSI, likely ovulation, or oral EC unsuitable.</td></tr>
+<tr><td>Ulipristal acetate 30mg</td><td>Single oral dose up to 120 hours after UPSI. Generally more effective than LNG, especially closer to ovulation. Not recommended with enzyme-inducing medicines used in the last 4 weeks. Avoid where excluded by PGD/SmPC, including severe asthma treated with oral glucocorticoids. Delay hormonal contraception for 5 days after UPA, then use condoms until the method is effective. Breastfeeding: avoid breastfeeding for 1 week and express/discard milk as per product information.</td></tr>
+<tr><td>Levonorgestrel</td><td>Usually 1.5mg single dose as soon as possible within 72 hours. Local PGD/guidance may support 3mg in enzyme-inducer situations or weight/BMI concern. Hormonal contraception can usually be started/restarted immediately with additional barrier precautions according to method.</td></tr>
+<tr><td>Vomiting</td><td>If vomiting occurs within the product-specific time window, repeat dose or refer according to PGD/product information. Consider copper IUD referral if vomiting risk persists.</td></tr>
+<tr><td>Pregnancy testing</td><td>Advise pregnancy test if period is more than 7 days late, abnormal, lighter/shorter, or no bleed within 3 weeks. EC does not protect against pregnancy from future UPSI.</td></tr>
+<tr><td>Safety-netting</td><td>Urgent medical help for severe lower abdominal pain, shoulder tip pain, fainting, heavy bleeding, or ectopic pregnancy symptoms. Discuss STI testing, condoms, regular contraception, sexual health clinic, GP and safeguarding support.</td></tr>
+</table>
+</section>
+
+<section class="card">
+<h2>Printable Consultation Record</h2>
+<div id="record"></div>
+</section>
+
+</div>
+
+<p class="footer">Version 3.0 detailed draft — local adaptation required. Check against current FSRH guideline, NHS Pharmacy Contraception Service PGDs/service specification, EMC SmPC/PIL for ellaOne and Levonelle, and local safeguarding procedures before live use.</p>
+</main>
+
+<script>
+function v(id){return document.getElementById(id).value}
+function c(id){return document.getElementById(id).checked}
+function add(arr,text){arr.push("<li>"+text+"</li>")}
+function todayDefaults(){
+  const d=new Date();
+  if(!document.getElementById("consultDate").value) document.getElementById("consultDate").value=d.toISOString().slice(0,10);
+  if(!document.getElementById("consultTime").value) document.getElementById("consultTime").value=d.toTimeString().slice(0,5);
+}
+todayDefaults();
+
+function calcBMI(){
+  const w = parseFloat(v("weightKg"));
+  const h = parseFloat(v("heightCm"))/100;
+  const out = document.getElementById("bmiValue");
+  const res = document.getElementById("bmiResult");
+  if(w>0 && h>0){
+    const bmi = w/(h*h);
+    out.value = bmi.toFixed(1);
+    if(w>70 || bmi>26){
+      res.textContent = "Weight/BMI flag: consider reduced oral EC effectiveness, especially LNG; discuss Cu-IUD and PGD dose options.";
+      res.style.background = "#fff8e6";
+    } else {
+      res.textContent = "No weight/BMI flag triggered.";
+      res.style.background = "#ecfdf3";
+    }
+  } else {
+    out.value = "";
+    res.textContent = "Enter weight and height";
+    res.style.background = "#eef6ff";
+  }
+}
+
+function showMethodFollowup(){
+  const m = v("method");
+  const box = document.getElementById("methodFollowup");
+  box.classList.remove("hidden");
+  let html = "";
+  if(m==="Combined pill missed/late"){
+    html = "<h3>Combined pill follow-up</h3><ul><li>How many pills missed?</li><li>Which week of packet?</li><li>Any missed pills in week 1 with UPSI in hormone-free interval?</li><li>Was pill-free interval extended?</li><li>Has patient restarted correctly?</li></ul>";
+  } else if(m==="Progestogen-only pill missed/late"){
+    html = "<h3>POP follow-up</h3><ul><li>Traditional POP or desogestrel POP?</li><li>How many hours late?</li><li>Any UPSI after missed/late pill?</li><li>Has patient taken missed pill and restarted?</li></ul>";
+  } else if(m==="Injection late"){
+    html = "<h3>Injection follow-up</h3><ul><li>Which injection?</li><li>Date last given?</li><li>How late is it?</li><li>Any UPSI after protection expired?</li></ul>";
+  } else if(m==="Patch/ring issue"){
+    html = "<h3>Patch/ring follow-up</h3><ul><li>Detached/removed/late start?</li><li>How long without patch/ring?</li><li>Which week?</li><li>Was hormone-free interval extended?</li></ul>";
+  } else if(m==="IUS/IUD expelled/removed/expired"){
+    html = "<h3>IUD/IUS follow-up</h3><ul><li>Date expelled/removed/expired?</li><li>Any UPSI in previous 7 days?</li><li>Refer for replacement and copper IUD assessment if suitable.</li></ul>";
+  } else if(m==="Recent abortion/miscarriage/birth"){
+    html = "<h3>Recent pregnancy event follow-up</h3><ul><li>Date of abortion/miscarriage/birth?</li><li>Any contraception started?</li><li>Breastfeeding?</li><li>Pregnancy test/clinical referral if uncertainty.</li></ul>";
+  } else if(m==="Condom failure/slippage"){
+    html = "<h3>Condom follow-up</h3><ul><li>Did condom split, leak, slip or come off?</li><li>Was ejaculation inside/near vagina?</li><li>Any further UPSI since?</li><li>Discuss condoms, STI testing and regular contraception.</li></ul>";
+  } else if(m==="None"){
+    html = "<h3>No contraception follow-up</h3><ul><li>Offer ongoing contraception discussion.</li><li>Discuss condoms/STI testing.</li><li>Consider bridging contraception if suitable.</li></ul>";
+  } else {
+    box.classList.add("hidden");
+  }
+  box.innerHTML = html;
+}
+
+function selectedMeds(cls){
+  return Array.from(document.querySelectorAll("."+cls+":checked")).map(x=>x.parentElement.textContent.trim());
+}
+function anyClassChecked(cls){ return document.querySelectorAll("."+cls+":checked").length>0; }
+
+function assess(){
+  calcBMI();
+  const hoursRaw=v("hours");
+  const hours = Number(hoursRaw);
+  const ageRaw=v("age");
+  const age = Number(ageRaw);
+  const bmi = parseFloat(v("bmiValue"));
+  const weight = parseFloat(v("weightKg"));
+  let red=[], amber=[], green=[], counselling=[], audit=[], dose=[], referral=[], medFlags=[];
+
+  const under16 = v("under16sel")==="Yes" || (ageRaw!=="" && age<16);
+  const under13 = v("under13sel")==="Yes" || (ageRaw!=="" && age<13);
+  const weightRisk = (weight>70) || (bmi>26);
+  const weightUnknown = c("weightUnknown") || (!weight && !bmi);
+  const enzyme = anyClassChecked("enzymeMed") || c("medOther") || c("medUnsure");
+  const enzymeList = selectedMeds("enzymeMed");
+  const cautionList = selectedMeds("cautionMed");
+  const upaContra = c("severeAsthma") || c("allergyUPA") || c("medSteroids") || enzyme || c("medEllaRecent");
+  const lngContra = c("allergyLNG");
+  const possiblePregnancy = v("pregnant")==="Period late/abnormal bleeding/pregnancy symptoms" || v("pregnant")==="Recent pregnancy/abortion/miscarriage/birth" || v("lmpNormal")==="No / late / unusual";
+  const knownPregnancy = v("pregnant")==="Positive pregnancy test/known pregnancy";
+  const highFertile = v("ovulation")==="Yes / mid-cycle / LH surge" || v("ovulation")==="Likely after ovulation";
+  const needsHormonalNow = v("startHormonal")==="Yes" || v("startHormonal")==="Already using" || c("medHormonalCurrent");
+  let recTitle="", recClass="blue";
+
+  if(enzymeList.length) add(medFlags,"Potential enzyme-inducing medicines selected: "+enzymeList.join(", ")+".");
+  if(cautionList.length) add(medFlags,"Additional caution medicines selected: "+cautionList.join(", ")+". Check PGD/SmPC/interaction source.");
+  if(c("medOther")) add(medFlags,"Other unlisted medicine selected: check interaction before supply.");
+  if(c("medUnsure")) add(medFlags,"Patient unsure of medicines/medicine list unavailable: verify before supply if possible.");
+  if(c("medLast4Weeks")) add(medFlags,"Relevant medicine used within last 4 weeks: apply enzyme-inducer precautions where relevant.");
+
+  if(v("present")==="No") add(red,"Patient is not present in person. Do not routine-supply under most PGD models unless the live PGD explicitly permits this. Arrange direct confidential consultation.");
+  if(v("private")==="No") add(red,"Private consultation cannot be achieved. Do not continue sensitive EHC consultation until privacy is available.");
+  if(v("consent")==="No" || v("consent")==="Unsure" || c("capacity")) add(red,"Consent/capacity concern. Refer/escalate appropriately and document rationale.");
+  if(c("language")) add(red,"Communication barrier is unresolved. Use appropriate interpreting/support before clinical decision.");
+  if(c("thirdParty")) add(amber,"Third party involvement concern. Speak to patient alone before proceeding.");
+
+  if(under13) add(red,"Under 13 years old: urgent safeguarding escalation required. Do not manage as routine EHC supply.");
+  if(c("coercion")||c("assault")||c("safeguard")||c("selfHarm")||v("partnerConcern")==="Large age gap / unknown partner / concern"||v("partnerConcern")==="Patient will not disclose") {
+    add(red,"Safeguarding, exploitation, coercion, assault or immediate risk concern flagged. Follow safeguarding/SARC/local urgent referral pathway.");
+  }
+  if(under16){
+    const fraserOK = c("fraser1")&&c("fraser2")&&c("fraser3")&&c("fraser4")&&c("fraser5");
+    if(!fraserOK) add(red,"Under 16: Fraser competence checklist is not fully completed. Complete and document before any PGD supply, unless safeguarding referral overrides.");
+    else add(amber,"Under 16: Fraser competence recorded as satisfied. Continue only if no safeguarding red flags and PGD criteria are met.");
+  }
+
+  if(knownPregnancy) add(red,"Known/confirmed pregnancy: oral EHC is not indicated. Refer for appropriate pregnancy advice/support.");
+  if(possiblePregnancy) add(amber,"Possible pre-existing pregnancy/recent pregnancy event/abnormal LMP. Consider pregnancy test, clinical assessment and referral depending on history.");
+  if(hoursRaw==="") add(red,"Hours since UPSI/contraceptive failure not entered. Timing is essential for safe recommendation.");
+  if(hours>120) add(red,"Most recent UPSI is over 120 hours ago. Oral EHC is outside usual UPA window. Urgent copper IUD referral if clinically appropriate.");
+  if(v("multiple")==="Yes - earliest over 120h") add(amber,"Multiple UPSI with earliest over 120 hours: increased risk of existing pregnancy. Copper IUD/sexual health referral strongly advised.");
+  if(v("multiple")==="Yes - all within 120h") add(amber,"Multiple UPSI in cycle: assess earliest and most recent UPSI, pregnancy risk, and copper IUD suitability.");
+  if(highFertile) add(amber,"High fertile risk / likely ovulation flagged. Copper IUD should be strongly recommended because oral EC may be less reliable around/after ovulation.");
+
+  if(c("liver")) add(amber,"Severe hepatic impairment: check PGD/SmPC and consider referral before supply.");
+  if(c("porphyria")) add(amber,"Porphyria concern: check PGD/SmPC and consider referral.");
+  if(c("malabsorption")) add(amber,"Vomiting/diarrhoea/malabsorption may reduce oral EC effectiveness. Consider copper IUD referral and product-specific advice.");
+  if(c("vomit")) add(amber,"Vomited after previous EC dose in this episode: check product-specific repeat-dose window and consider referral.");
+  if(enzyme) add(amber,"Selected medicine(s) may reduce oral EC effectiveness or require interaction checking. Copper IUD is preferred. UPA is generally not recommended with enzyme-inducing medicines used in the last 4 weeks; LNG 3mg may be considered only if PGD permits.");
+  if(weightRisk) add(amber,"Weight >70kg or BMI >26: oral EC efficacy, especially LNG, may be reduced. Copper IUD should be discussed strongly; consider UPA or LNG 3mg according to PGD.");
+  if(weightUnknown) add(amber,"Weight/BMI unknown or declined. Counsel that weight/BMI can affect oral EC choice/effectiveness and document discussion.");
+  if(c("severeAsthma") || c("medSteroids")) add(amber,"UPA is unsuitable/caution if severe asthma is treated with oral glucocorticoids.");
+  if(c("allergyUPA")) add(red,"UPA allergy/contraindication recorded.");
+  if(c("allergyLNG")) add(red,"LNG allergy/contraindication recorded.");
+  if(c("medEllaRecent")) add(amber,"EllaOne/UPA taken in last 5 days. Avoid repeat UPA unless current local PGD explicitly allows; consider copper IUD or LNG depending on timing and guidance.");
+
+  add(referral,"Offer copper IUD referral to all suitable patients as the most effective EC option.");
+  if(hours>72 || highFertile || enzyme || weightRisk || v("multiple")!=="No") add(referral,"Copper IUD should be emphasised because one or more factors may reduce oral EC effectiveness or increase pregnancy risk.");
+  if(c("assault")) add(referral,"Offer urgent sexual assault referral/SARC, STI testing, emergency support, and safeguarding action.");
+
+  if(red.length){
+    recTitle="Refer / do not routine-supply until red flags resolved";
+    recClass="red";
+    add(green,"Do not complete routine PGD supply while red-flag issues remain unresolved.");
+    add(green,"Escalate according to safeguarding, sexual health, GP, urgent care or copper IUD referral pathway as appropriate.");
+  } else if(hours<=120 && hours>72){
+    if(upaContra){
+      recTitle="Copper IUD preferred — UPA unsuitable and LNG outside licensed 72h window";
+      recClass="amber";
+      add(green,"Refer urgently for copper IUD assessment if suitable.");
+      add(green,"Do not supply UPA if contraindicated/excluded. LNG after 72 hours is outside licensed timing and should only be considered if an authorised local PGD/guideline permits.");
+    } else {
+      recTitle="Recommend UPA 30mg now, plus copper IUD offer/referral";
+      recClass="green";
+      add(green,"UPA 30mg single dose is the usual oral EHC option between 72 and 120 hours if PGD criteria are met.");
+      add(green,"Still offer copper IUD because it is the most effective option.");
+      add(dose,"UPA: 30mg single oral dose as soon as possible.");
+    }
+  } else if(hours<=72 && hours>=0){
+    if(upaContra && lngContra){
+      recTitle="No suitable oral option identified — urgent referral";
+      recClass="red";
+      add(green,"Both oral options appear unsuitable. Refer urgently for copper IUD/sexual health/GP assessment.");
+    } else if(enzyme){
+      recTitle="Copper IUD preferred; consider LNG 3mg only if PGD permits";
+      recClass="amber";
+      add(green,"UPA is generally not recommended with selected enzyme-inducing medicines or unresolved medicine uncertainty.");
+      add(green,"Copper IUD is preferred. If oral EC is used, LNG 3mg may be considered where the signed PGD/local guidance authorises it.");
+      add(dose,"Potential LNG dose: 3mg single dose if locally authorised for enzyme-inducer use.");
+    } else if(upaContra){
+      recTitle="Recommend LNG if suitable, plus copper IUD discussion";
+      recClass="green";
+      add(green,"UPA appears unsuitable. LNG can be considered within 72 hours if no LNG contraindication and PGD criteria are met.");
+      add(dose, weightRisk ? "Potential LNG dose: consider 3mg if local PGD permits due to weight/BMI risk." : "LNG: 1.5mg single dose as soon as possible.");
+    } else {
+      recTitle="UPA 30mg usually preferred; LNG also possible within 72h";
+      recClass="green";
+      add(green,"UPA is generally the more effective oral option, particularly close to ovulation.");
+      add(green,"LNG remains an option within 72 hours where UPA is unsuitable or where immediate hormonal contraception start/restart is prioritised after counselling.");
+      add(dose,"UPA: 30mg single dose as soon as possible.");
+      add(dose, weightRisk ? "If LNG chosen instead, consider 3mg if local PGD permits due to weight/BMI risk." : "If LNG chosen instead: 1.5mg single dose as soon as possible.");
+    }
+  } else {
+    recTitle="Insufficient information";
+    recClass="blue";
+    add(green,"Complete timing, pregnancy risk, safeguarding and medication sections before recommendation.");
+  }
+
+  if(needsHormonalNow && !upaContra && hours<=120) add(amber,"Patient wants/needs hormonal contraception now. If UPA supplied, hormonal contraception must be delayed for 5 days; discuss LNG alternative if immediate restart is clinically prioritised, recognising efficacy trade-off.");
+  if(c("medLevonelleRecent") || v("recentEC")==="Levonorgestrel already used") add(amber,"LNG already used this cycle: repeat oral EC may be possible depending on timing and PGD, but reassess pregnancy risk and offer copper IUD.");
+  if(v("recentEC")==="Ulipristal already used") add(amber,"UPA already used this cycle: document timing and follow repeat-use/local PGD guidance.");
+
+  add(counselling,"Take oral EC as soon as possible. It only covers UPSI before the dose, not sex after the dose.");
+  add(counselling,"Use condoms/avoid sex until ongoing contraception is effective.");
+  add(counselling,"Pregnancy test if period is more than 7 days late, abnormal, lighter/shorter, or no bleed within 3 weeks.");
+  add(counselling,"Urgent medical help if severe lower abdominal pain, shoulder tip pain, fainting, heavy bleeding, or ectopic pregnancy symptoms.");
+  add(counselling,"Discuss STI testing, condoms, sexual health clinic, regular contraception and missed contraception advice.");
+  if(!upaContra && hours<=120) add(counselling,"If UPA supplied: do not start/restart hormonal contraception for 5 days. Then use condoms until the contraceptive method becomes effective.");
+  if(v("breastfeeding")==="Yes") add(counselling,"Breastfeeding: LNG is generally compatible. UPA requires avoiding breastfeeding for 1 week and expressing/discarding milk as per product information.");
+  if(under16) add(counselling,"For young person: document Fraser assessment, confidentiality discussion, safeguarding assessment and any referral/advice.");
+
+  add(audit,"Record patient consent, confidentiality discussion, PGD inclusion/exclusion checks and professional decision.");
+  add(audit,"Record product, dose, batch number, expiry date, date/time supplied, counselling given and referral offered/accepted/declined.");
+  add(audit,"Record medicine list checked, selected medicine flags, and interaction source/PGD check if relevant.");
+  add(audit,"Record safeguarding rationale and actions, especially for under 16s, vulnerability, coercion or assault concerns.");
+  add(audit,"Record pregnancy test advice, STI advice, ongoing contraception advice and safety-netting.");
+
+  const badges = `${red.length?'<span class="pill pill-red">Red flags</span>':''}${amber.length?'<span class="pill pill-amber">Cautions</span>':''}${green.length?'<span class="pill pill-green">Recommendation</span>':''}<span class="pill pill-blue">Copper IUD discussed</span>`;
+  const html = `<div class="result ${recClass}"><h3>${recTitle}</h3>${badges}
+  <h4>Recommended action</h4><ul>${green.join("")}</ul>
+  ${dose.length?`<h4>Dose consideration</h4><ul>${dose.join("")}</ul>`:""}
+  <h4>Copper IUD / referral</h4><ul>${referral.join("")}</ul>
+  ${red.length?`<h4>Red flags / do not routine-supply</h4><ul>${red.join("")}</ul>`:""}
+  ${medFlags.length?`<h4>Medicine flags identified</h4><ul>${medFlags.join("")}</ul>`:""}
+  ${amber.length?`<h4>Cautions requiring professional judgement/documentation</h4><ul>${amber.join("")}</ul>`:""}
+  <h4>Counselling checklist</h4><ul>${counselling.join("")}</ul>
+  <h4>Audit documentation prompts</h4><ul>${audit.join("")}</ul>
+  <p class="small"><strong>Final check:</strong> ensure the signed PGD and current local service specification authorise your supply decision.</p></div>`;
+
+  document.getElementById("output").innerHTML = html;
+  document.getElementById("record").innerHTML = `<div class="result blue">
+  <h3>Consultation Record Summary</h3>
+  <table>
+  <tr><th>Date/time</th><td>${v("consultDate")} ${v("consultTime")}</td></tr>
+  <tr><th>Clinician/location</th><td>${v("pharmacist")} / ${v("location")}</td></tr>
+  <tr><th>Patient ref/age</th><td>${v("patientRef")} / ${v("age")}</td></tr>
+  <tr><th>UPSI timing</th><td>${v("hours")} hours; ${v("upsiDate")}</td></tr>
+  <tr><th>Weight/BMI</th><td>${v("weightKg")} kg / BMI ${v("bmiValue")}</td></tr>
+  <tr><th>Method/failure</th><td>${v("method")} — ${v("methodNotes")}</td></tr>
+  <tr><th>Pregnancy notes</th><td>${v("pregNotes")}</td></tr>
+  <tr><th>Medicine notes</th><td>${v("medNotes")}</td></tr>
+  <tr><th>Medical condition notes</th><td>${v("conditionNotes")}</td></tr>
+  <tr><th>Safeguarding/Fraser notes</th><td>${v("safeguardingNotes")}</td></tr>
+  <tr><th>Generated recommendation</th><td>${recTitle}</td></tr>
+  </table>
+  </div>`;
+  window.location.hash="output";
+}
+
+function resetForm(){
+  document.querySelectorAll("input,select,textarea").forEach(el=>{
+    if(el.type==="checkbox") el.checked=false;
+    else if(el.id==="location") el.value="Woodroyd Pharmacy";
+    else el.value="";
+  });
+  document.getElementById("output").innerHTML="";
+  document.getElementById("record").innerHTML="";
+  document.getElementById("methodFollowup").innerHTML="";
+  document.getElementById("methodFollowup").classList.add("hidden");
+  todayDefaults();
+  calcBMI();
+}
+</script>
+</body>
+</html>
